@@ -7,6 +7,11 @@ module.exports = {
       ],
 
     theme: {
+        colors: {
+            ...require('tailwindcss/colors'),
+            primary: '#EF4444',
+            secondary: '#2563EB'
+        },
         extend: {},
     },
 

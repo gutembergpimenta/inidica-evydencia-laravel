@@ -1,3 +1,81 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer components {
+    .calc-menu-h-screen {
+        height: calc(100vh - 3.5rem);
+    }
+    
+    body {
+        @apply flex min-h-screen mx-2 flex-col gap-10 items-center justify-center bg-trueGray-300;
+        @apply font-mono;
+    }
+    .header {
+        @apply flex justify-between gap-8 items-center px-4 h-14 w-screen bg-primary;
+    }
+    .header .header-logo {
+        @apply flex border-b border-r shadow-lg rounded items-center justify-center w-28 h-12 bg-black bg-opacity-20 text-white font-extrabold;
+        text-shadow: .2rem .2rem .15rem #000 ;
+    }
+    .header .header-nav {
+        @apply flex lg:flex-1 justify-between;
+    }
+    .header .header-nav .links{
+        @apply hidden gap-12 lg:flex;
+    }
+    .header .header-nav .links a{
+        @apply py-2 px-4 lg:rounded-t mt-4 text-white;
+    }
+    .header .header-nav .links a.active{
+        @apply bg-trueGray-300 text-primary;
+    }
+
+    .header .header-nav .profile{
+        @apply hidden lg:flex min-w-min flex-col items-center justify-center text-xs;
+    }
+    
+    .header .header-nav .btn-mobile{
+        @apply flex lg:hidden min-w-min flex-col items-center justify-center text-xs;
+    }
+    .header .header-nav .links-mobile{
+        @apply duration-500 flex flex-col gap-2 absolute top-14 left-0 w-screen text-white bg-white bg-opacity-50 lg:hidden overflow-y-auto;
+    }
+    .header .header-nav .links-mobile .profile-mobile{
+        @apply flex items-center m-2 pb-5 text-black border-b border-black justify-between;
+    }
+    .header .header-nav .links-mobile a{
+        @apply flex items-center justify-center shadow border-b border-r bg-primary rounded mx-4 mt-2 py-4 text-white;
+    }
+    .header .header-nav .links-mobile a.active{
+        @apply flex items-center justify-center shadow border-b border-r bg-white rounded mx-4 mt-2 py-4 text-primary;
+    }
+
+    .main {
+        @apply flex flex-1 w-full h-full items-center justify-center
+    }
+    .main .content {
+        @apply flex border-b border-r rounded shadow-lg bg-black bg-opacity-10 p-4 w-full md:max-w-xl items-center justify-center;
+    }
+
+    .footer {
+        @apply flex text-white flex-col items-center justify-center pt-8 pb-2 gap-8 w-screen bg-primary shadow border-t border-gray-400;
+    }
+    .footer .footer-txt{
+        @apply flex justify-between w-screen gap-5 text-center;
+    }
+    .footer .footer-txt .footer-txt-copy{
+        @apply flex items-center text-center justify-center w-3/6 bg-black bg-opacity-20 border-b border-r rounded-md shadow-2xl ml-8;
+    }
+    .footer .footer-txt .footer-social{
+        @apply flex flex-col items-center justify-center gap-4 w-3/6;
+    }
+    .footer .footer-txt .footer-social .footer-social-icons{
+        @apply flex items-center justify-center gap-5 font-extrabold;
+    }
+    .footer .footer-signature{
+        @apply flex justify-center lg:justify-end text-white w-screen lg:pr-10 font-extrabold;
+    }
+
+}
