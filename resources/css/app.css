@@ -58,6 +58,9 @@
     .main .content {
         @apply flex border-b border-r rounded shadow-lg bg-black bg-opacity-10 p-4 w-full md:max-w-xl items-center justify-center;
     }
+    .main .content img {
+        @apply w-96;
+    }
 
     .footer {
         @apply flex text-white flex-col items-center justify-center pt-8 pb-2 gap-8 w-screen bg-primary shadow border-t border-gray-400;

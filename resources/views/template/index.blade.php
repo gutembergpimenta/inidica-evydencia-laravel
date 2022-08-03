@@ -30,14 +30,16 @@
                 @yield('links')
             </div>
 
-            <div class="profile">
-                <i class="bi bi-person-circle text-3xl"></i>
-                <span>(Nome da Pessoa)</span>
-            </div>
+            @isset($connection)                
+                <div class="profile">
+                    <i class="bi bi-person-circle text-3xl"></i>
+                    <span>(Nome da Pessoa)</span>
+                </div>
 
-            <button class="btn-mobile" id="btn_mobile">
-                <i class="bi bi-menu-button-wide text-4xl" id="btn_mobile_icon"></i>
-            </button>
+                <button class="btn-mobile" id="btn_mobile">
+                    <i class="bi bi-menu-button-wide text-4xl" id="btn_mobile_icon"></i>
+                </button>
+            @endisset
         </nav>
     </header>
 
