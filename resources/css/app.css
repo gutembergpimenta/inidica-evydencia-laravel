@@ -82,3 +82,21 @@
     }
 
 }
+
+@layer components {
+    form {
+        @apply w-full flex flex-col gap-4;
+    }
+    form input{
+        @apply px-4 py-2 rounded shadow-md border-b border-r border-gray-200 focus:border-0 focus:border-primary;
+    }
+    form .div-box{
+        @apply flex gap-4 px-4 py-2 rounded shadow-md border-b border-r border-gray-200 bg-white focus:border-0 focus:border-primary;
+    }
+    form .div-box label{
+        @apply flex-1;
+    }
+    form button{
+        @apply px-4 py-2 rounded shadow-md border-b border-r border-gray-200 bg-primary hover:bg-red-700 text-white font-extrabold;
+    }
+}
