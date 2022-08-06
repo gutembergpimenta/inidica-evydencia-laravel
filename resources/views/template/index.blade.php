@@ -30,7 +30,7 @@
                 @yield('links')
             </div>
 
-            @isset($connection)                
+            @isset($connection)
                 <div class="profile">
                     <i class="bi bi-person-circle text-3xl"></i>
                     <span>(Nome da Pessoa)</span>
@@ -52,7 +52,7 @@
     <footer class="footer">
         <div class="footer-txt">
             <div class="footer-txt-copy">
-                &copy;2022 Todos direitos reservados.
+                &copy;2022 Evydencia todos direitos reservados.
             </div>
 
             <div class="footer-social">

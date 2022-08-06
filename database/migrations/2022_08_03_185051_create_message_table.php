@@ -18,7 +18,10 @@ return new class extends Migration
             $table->string('from');
             $table->string('to');
             $table->integer('status');
-            $table->string('template');
+            $table->string('template_text');
+            $table->string('template_audio');
+            $table->string('template_video');
+            $table->string('template_image');
             $table->timestamps();
         });
     }

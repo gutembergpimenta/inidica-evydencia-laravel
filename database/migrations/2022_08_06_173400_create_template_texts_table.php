@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('template_texts', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->integer('status');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

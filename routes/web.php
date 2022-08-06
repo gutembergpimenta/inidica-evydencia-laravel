@@ -20,8 +20,8 @@ Route::middleware('guest')->group( function(){
         return view('index');
     });
 
-    Route::get('/home', [MainController::class, 'index']);
-    Route::put('/home', [MainController::class, 'confirmed_indication']);
+    Route::get('/inicio', [MainController::class, 'index'])->name('home');
+    Route::post('/inicio', [MainController::class, 'confirmed_indication'])->name('home.action');
 
 
 });

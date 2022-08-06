@@ -57,12 +57,12 @@ class ZApiController extends Controller
             "content-type: application/json"
           ),
         ));
-        
+
         $response = curl_exec($curl);
         $err = curl_error($curl);
-        
+
         curl_close($curl);
-        
+
         if ($err){
             die('Erro na requição: ' . $err);
         }
@@ -81,7 +81,7 @@ class ZApiController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => "{
-                \"phone\": \"{$phone}\", 
+                \"phone\": \"{$phone}\",
                 audio\": \"{$audio}\"
             }",
             CURLOPT_HTTPHEADER => array(
@@ -112,7 +112,7 @@ class ZApiController extends Controller
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_POSTFIELDS => "{
-                \"phone\": \"{$phone}\", 
+                \"phone\": \"{$phone}\",
                 \"video\": \"{$video}\",
                 \"caption\": \"{$caption}\",
             }",
@@ -129,5 +129,49 @@ class ZApiController extends Controller
         if ($err){
             die('Erro na requição: ' . $err);
         }
+    }
+
+    public function getContacts()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "{$this->url}contacts?page=1&pageSize=9999999",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $response = curl_exec($curl);
+        $response = json_encode($response, true);
+
+        curl_close($curl);
+
+        return $response;
+    }
+
+    public function getChats(int $qt=10)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "{$this->url}chats?page=1&pageSize={$qt}",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $response = curl_exec($curl);
+        $response = json_encode($response, true);
+
+        curl_close($curl);
+
+        return $response;
     }
 }
