@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('message', function (Blueprint $table) {
+        Schema::create('template_audios', function (Blueprint $table) {
             $table->id();
-            $table->string('from');
-            $table->string('to');
+            $table->string('audio');
+            $table->string('caption');
             $table->integer('status');
-            $table->string('template');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('message');
+        Schema::dropIfExists('template_audios');
     }
 };

@@ -7,7 +7,7 @@
     @csrf
 
     @method('PUT')
-    
+
     <input type="number" name="qt_contact" placeholder="Escolha a qtd. de contatos a ser indicado.">
     <h6>Escolha as mensagem a ser enviadas:</h6>
     <div class="div-box">
@@ -27,5 +27,5 @@
         <label for="4">VIDEO</label>
     </div>
     <button>ENVIAR</button>
-  </form>
+	</form>
 @endsection
