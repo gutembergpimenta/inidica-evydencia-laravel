@@ -19,25 +19,34 @@
     @endif
 
     @if ($images)
-        @foreach ($images as $images)
+        @foreach ($images as $image)
             <div class="div-box">
-                <input type="checkbox" name="template_image_1" value="1" id="template_image_1">
-                <label for="template_image_1">IMG</label>
+                <input type="checkbox" name="template_image_{{ $image->id }}" value="{{ $image->id }}" id="template_image_{{ $image->id }}">
+
+                <label for="template_image_{{ $image->id }}">
+                    <img src="{{ $image->image }}" alt="" srcset="">
+                </label>
+
+                <label for="template_image_{{ $image->id }}">{{ $image->caption }}</label>
             </div>
         @endforeach
     @endif
 
     @if ($audios)
-        @foreach ($audios as $audios)
+        @foreach ($audios as $audio)
             <div class="div-box">
-                <input type="checkbox" name="template_audio_1" value="1" id="template_audio_1">
-                <label for="template_audio_1">AUDIO</label>
+                <input type="checkbox" name="template_audio_{{ $audio->id }}" value="{{ $audio->id }}" id="template_audio_{{ $audio->id }}">
+                <label for="template_audio_{{ $audio->id }}"></label>
+                <audio controls>
+                    <source src="{{ $audio->audio }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
             </div>
         @endforeach
     @endif
 
     @if ($videos)
-        @foreach ($videos as $videos)
+        @foreach ($videos as $video)
             <div class="div-box">
                 <input type="checkbox" name="template_video_1" value="1" id="template_video_1">
                 <label for="template_video_1">VIDEO</label>

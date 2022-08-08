@@ -31,7 +31,7 @@ class ZApiController extends Controller
 
         curl_close($curl);
 
-        if ($err){
+        if ($err) {
             die('Erro na requição: ' . $err);
         }
     }
@@ -63,7 +63,7 @@ class ZApiController extends Controller
 
         curl_close($curl);
 
-        if ($err){
+        if ($err) {
             die('Erro na requição: ' . $err);
         }
     }
@@ -94,7 +94,7 @@ class ZApiController extends Controller
 
         curl_close($curl);
 
-        if ($err){
+        if ($err) {
             die('Erro na requição: ' . $err);
         }
     }
@@ -126,7 +126,7 @@ class ZApiController extends Controller
 
         curl_close($curl);
 
-        if ($err){
+        if ($err) {
             die('Erro na requição: ' . $err);
         }
     }
@@ -173,5 +173,83 @@ class ZApiController extends Controller
         curl_close($curl);
 
         return $response;
+    }
+
+    public function statusInstance()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "{$this->url}status",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $response = json_encode($response, true);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if(isset($response['connected']) AND $response['connected']){
+            if(!$response['error']){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function getQRCode()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "{$this->url}qr-code/image",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "accept: application/json"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $response = json_encode($response, true);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+    }
+
+    public function getData()
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => "{$this->url}device",
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+        ));
+
+        $response = curl_exec($curl);
+        $response = json_encode($response, true);
+        $err = curl_error($curl);
+
+        curl_close($curl);
     }
 }
