@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\TemplateAudio;
 use App\Models\TemplateImage;
 use App\Models\TemplateVideo;
+use App\Models\ZApiRequests as ZApiRequests;
 
 class MainController extends Controller
 {
+    protected $url = "https://api.z-api.io/instances/YOUR_ID/token/YOUR_TOKEN/";
+
     public function index(Request $request)
     {
         return view('home', [
@@ -38,11 +41,19 @@ class MainController extends Controller
         $templates_array = array_intersect_key($request->post(), array_flip($key_array_post));
         $template_video = implode(',', $templates_array);
 
+        $qt_contact = intval($request->post('qt_contact'));
+
         if(!$templates_text AND !$template_audio AND !$template_image AND !$template_video){
             return redirect()->route('home');
         }
 
-        dd($templates_text, $template_image, $template_audio, $template_video);
+        if(!$qt_contact){
+            $qt_contact = 0;
+        }
+
+        $teste = ZApiRequests::getChats($qt_contact, $this->url);
+
+        dd($teste, $qt_contact, $templates_text, $template_image, $template_audio, $template_video);
     }
 
 }

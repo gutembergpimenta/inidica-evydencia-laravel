@@ -1,19 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models;
 
-use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class ZApiController extends Controller
+class ZApiRequests extends Model
 {
-    protected $url = "https://api.z-api.io/instances/YOUR_ID/token/YOUR_TOKEN/";
+    use HasFactory;
 
-    public function sendTxt(string $phone, string $message)
+    static public function sendTxt(string $phone, string $message, string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$this->url}send-text",
+            CURLOPT_URL => "{$url}send-text",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -36,12 +37,12 @@ class ZApiController extends Controller
         }
     }
 
-    public function sendImage(string $phone, string $image, string $caption=null)
+    static public function sendImage(string $phone, string $image, string $caption=null, string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => "{$this->url}send-image",
+          CURLOPT_URL => "{$url}send-image",
           CURLOPT_RETURNTRANSFER => true,
           CURLOPT_ENCODING => "",
           CURLOPT_MAXREDIRS => 10,
@@ -68,12 +69,12 @@ class ZApiController extends Controller
         }
     }
 
-    public function sendAudio(string $phone, string $audio)
+    static public function sendAudio(string $phone, string $audio, string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$this->url}send-audio",
+            CURLOPT_URL => "{$url}send-audio",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -99,12 +100,12 @@ class ZApiController extends Controller
         }
     }
 
-    public function sendVideo(string $phone, string $video, string $caption=null)
+    static public function sendVideo(string $phone, string $video, string $caption=null, string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$this->url}send-video",
+            CURLOPT_URL => "{$url}send-video",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -131,18 +132,22 @@ class ZApiController extends Controller
         }
     }
 
-    public function getContacts()
+    static public function getContacts(string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$this->url}contacts?page=1&pageSize=9999999",
+            CURLOPT_URL => "{$url}contacts?page=1&pageSize=9999999",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/json"
+            ),
+
         ));
 
         $response = curl_exec($curl);
@@ -153,18 +158,22 @@ class ZApiController extends Controller
         return $response;
     }
 
-    public function getChats(int $qt)
+    static public function getChats(int $qt, string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$this->url}chats?page=1&pageSize={$qt}",
+            CURLOPT_URL => "{$url}chats?page=1&pageSize={$qt}",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/json"
+            ),
+
         ));
 
         $response = curl_exec($curl);
@@ -175,12 +184,12 @@ class ZApiController extends Controller
         return $response;
     }
 
-    public function statusInstance()
+    static function statusInstance(string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$this->url}status",
+            CURLOPT_URL => "{$url}status",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -207,12 +216,12 @@ class ZApiController extends Controller
         return false;
     }
 
-    public function getQRCode()
+    static function getQRCode(string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$this->url}qr-code/image",
+            CURLOPT_URL => "{$url}qr-code/image",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
@@ -232,18 +241,22 @@ class ZApiController extends Controller
 
     }
 
-    public function getData()
+    static function getData(string $url)
     {
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$this->url}device",
+            CURLOPT_URL => "{$url}device",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "content-type: application/json"
+            ),
+
         ));
 
         $response = curl_exec($curl);

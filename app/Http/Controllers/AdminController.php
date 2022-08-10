@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\TemplateText;
 use Illuminate\Http\Request;
 use App\Models\TemplateAudio;
 use App\Models\TemplateImage;
+use App\Models\TemplateVideo;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -32,7 +34,7 @@ class AdminController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->name('admin.home');
+            return redirect()->name('admin.index');
         }
     }
 
@@ -93,8 +95,50 @@ class AdminController extends Controller
         return view('admin.create_text');
     }
 
+    public function storeText(Request $request)
+    {
+        $request->validate([
+            'text' => 'required|string',
+        ]);
+
+        $saveImage = TemplateText::create([
+            'text' => $request->post('text'),
+        ]);
+
+        if($saveImage){
+            $request->session()->flash('status', 'Texto adicionado com sucesso.');
+            return redirect()->back();
+        }
+
+        $request->session()->flash('status', 'Erro ao adicionar texto no banco de dados.');
+        return redirect()->back();
+
+    }
+
     public function createVideo(Request $request)
     {
         return view('admin.create_video');
+    }
+
+    public function storeVideo(Request $request)
+    {
+        $request->validate([
+            'video' => 'required|url',
+            'caption' => 'string|nullable',
+        ]);
+
+        $saveImage = TemplateVideo::create([
+            'video' => $request->post('video'),
+            'caption' => $request->post('caption'),
+        ]);
+
+        if($saveImage){
+            $request->session()->flash('status', 'Video adicionado com sucesso.');
+            return redirect()->back();
+        }
+
+        $request->session()->flash('status', 'Erro ao adicionar Video no banco de dados.');
+        return redirect()->back();
+
     }
 }

@@ -36,11 +36,12 @@
         @foreach ($audios as $audio)
             <div class="div-box">
                 <input type="checkbox" name="template_audio_{{ $audio->id }}" value="{{ $audio->id }}" id="template_audio_{{ $audio->id }}">
-                <label for="template_audio_{{ $audio->id }}"></label>
-                <audio controls>
-                    <source src="{{ $audio->audio }}" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
+                <label for="template_audio_{{ $audio->id }}">
+                    <audio controls>
+                        <source src="{{ $audio->audio }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </label>
             </div>
         @endforeach
     @endif
@@ -48,8 +49,14 @@
     @if ($videos)
         @foreach ($videos as $video)
             <div class="div-box">
-                <input type="checkbox" name="template_video_1" value="1" id="template_video_1">
-                <label for="template_video_1">VIDEO</label>
+                <input type="checkbox" name="template_video_{{ $video->id }}" value="{{ $video->id }}" id="template_video_1">
+                <label for="template_video_{{ $video->id }}">
+                    {{ $video->caption }} <br /> <br />
+                    <video controls>
+                        <source src="{{ $video->video }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </label>
             </div>
         @endforeach
     @endif

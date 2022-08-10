@@ -17,19 +17,19 @@ Route::middleware('guest')->group( function(){
 });
 
 
-Route::prefix('admin')->middleware('auth')->group( function(){
-    Route::get('/home', [AdminController::class, 'main'])->name('admin.home');
+Route::prefix('admin')->name('admin.')->middleware('auth')->group( function(){
+    Route::get('/home', [AdminController::class, 'main'])->name('index');
 
-    Route::get('/adicionar_audio', [AdminController::class, 'createAudio'])->name('admin.create.audio');
-    Route::post('/adicionar_audio', [AdminController::class, 'storeAudio'])->name('admin.store.audio');
+    Route::get('/adicionar_audio', [AdminController::class, 'createAudio'])->name('create.audio');
+    Route::post('/adicionar_audio', [AdminController::class, 'storeAudio'])->name('store.audio');
 
-    Route::get('/adicionar_imagem',[AdminController::class, 'createImage'])->name('admin.create.image');
-    Route::post('/adicionar_imagem',[AdminController::class, 'storeImage'])->name('admin.store.image');
+    Route::get('/adicionar_imagem',[AdminController::class, 'createImage'])->name('create.image');
+    Route::post('/adicionar_imagem',[AdminController::class, 'storeImage'])->name('store.image');
 
-    Route::get('/adicionar_texto', [AdminController::class, 'createText'])->name('admin.create.text');
+    Route::get('/adicionar_texto', [AdminController::class, 'createText'])->name('create.text');
+    Route::post('/adicionar_texto', [AdminController::class, 'storeText'])->name('store.text');
 
-    Route::get('/adicionar_video', [AdminController::class, 'createVideo'])->name('admin.create.video');
-
-
+    Route::get('/adicionar_video', [AdminController::class, 'createVideo'])->name('create.video');
+    Route::post('/adicionar_video', [AdminController::class, 'storeVideo'])->name('store.video');
 });
 
