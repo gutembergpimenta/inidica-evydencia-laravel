@@ -73,7 +73,7 @@
         </div>
     </footer>
 
-    {{-- @vite('resources/js/app.js') --}}
+    @vite('resources/js/app.js')
     <script src="{{ asset('build/assets/app.8b76f0c5.js') }}"></script>
 </body>
 </html>
