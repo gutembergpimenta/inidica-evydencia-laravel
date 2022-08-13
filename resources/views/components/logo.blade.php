@@ -3,7 +3,7 @@
         @if (isset($img) && $img)
             <img src="{{ $img }}" alt="LOGO">
         @else
-            EVYDENCI
+            EVYDENCIA
         @endif
     </a>
 </div>
