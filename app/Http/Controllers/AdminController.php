@@ -20,7 +20,7 @@ class AdminController extends Controller
     public function main(Request $request)
     {
         return view('admin.home',[
-            'user' => Auth::user(),
+            'connection' => Auth::user(),
         ]);
     }
 
@@ -34,13 +34,15 @@ class AdminController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            return redirect()->name('admin.index');
+            return redirect()->route('admin.index');
         }
     }
 
     public function createAudio(Request $request)
     {
-        return view('admin.create_audio');
+        return view('admin.create_audio',[
+            'connection' => Auth::user(),
+        ]);
     }
 
     public function storeAudio(Request $request)
@@ -65,7 +67,9 @@ class AdminController extends Controller
 
     public function createImage(Request $request)
     {
-        return view('admin.create_image');
+        return view('admin.create_image', [
+            'connection' => Auth::user(),
+        ]);
     }
 
     public function storeImage(Request $request)
@@ -92,7 +96,9 @@ class AdminController extends Controller
 
     public function createText(Request $request)
     {
-        return view('admin.create_text');
+        return view('admin.create_text',[
+            'connection' => Auth::user(),
+        ]);
     }
 
     public function storeText(Request $request)
@@ -117,7 +123,9 @@ class AdminController extends Controller
 
     public function createVideo(Request $request)
     {
-        return view('admin.create_video');
+        return view('admin.create_video', [
+            'connection' => Auth::user(),
+        ]);
     }
 
     public function storeVideo(Request $request)

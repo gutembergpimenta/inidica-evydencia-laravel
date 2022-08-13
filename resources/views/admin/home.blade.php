@@ -11,5 +11,5 @@
 
 
 @section('content')
-    Olá {{ $user->name }} seja bem vindo ao painel administrativo.
+    Olá {{ $connection->name }} seja bem vindo ao painel administrativo.
 @endsection
