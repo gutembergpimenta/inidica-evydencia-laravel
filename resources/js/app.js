@@ -40,7 +40,10 @@ if (route_name == "index") {
         })
         .then(response => response.json())
         .then(states =>{
-            console.log(states.connected)
+            if (states.connected)
+                window.Location.href = "https://dreamy-hertz.177-234-144-114.plesk.page/inicio"
+            else
+                console.log(states.error)
         })
         .catch(err => {
             console.log(err);
