@@ -23,7 +23,7 @@ setInterval(() => {
     })
     .then(response => response.json())
     .then(states =>{
-        console.log(states)
+        console.log(states.value)
     })
     .catch(err => {
         console.log(err);
