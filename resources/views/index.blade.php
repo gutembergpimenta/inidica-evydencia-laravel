@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <img src="{{ asset('assets/qrcode.jpg') }}" alt="QRCODE" id="img-qrcode">
+    <img src="https://gifs.eco.br/wp-content/uploads/2021/08/imagens-e-gifs-de-loading-4.gif" alt="QRCODE" id="img-qrcode">
 @endsection
