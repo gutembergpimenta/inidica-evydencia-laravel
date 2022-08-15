@@ -15,6 +15,12 @@ if (btn_mobile) {
 }
 
 setInterval(() => {
-    let test = 0
-    console.log(++test)
+    let url = "https://dreamy-hertz.177-234-144-114.plesk.page/api/getQrCode"
+    fetch(url, {
+        "method": "GET",
+        "headers": {}
+    })
+    .then(response => {
+        console.log(response)
+    })
 }, 10000);
