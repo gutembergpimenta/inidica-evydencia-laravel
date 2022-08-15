@@ -1,7 +1,3 @@
-
-
-{{ dd($connection['phone']) }}
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -35,15 +31,13 @@
             </div>
 
             @isset($connection)
-                @foreach ($connection as $user)
                     <div class="profile">
-                        @isset ($user->imgUrl)
-                            <img src="{{ $user->imgUrl }}" alt="{{ $user->name }}">
+                        @isset ($connection['imgUrl'])
+                            <img src="{{ $connection['imgUrl'] }}" alt="{{ $connection['phone'] }}">
                         @endisset
 
-                        <span>({{ $user['phone'] }})</span>
+                        <span>({{ $connection['phone'] }})</span>
                     </div>
-                @endforeach
 
                 <button class="btn-mobile" id="btn_mobile">
                     <i class="bi bi-menu-button-wide text-4xl" id="btn_mobile_icon"></i>
