@@ -23,7 +23,6 @@ setInterval(() => {
     })
     .then(response => response.json())
     .then(states =>{
-        console.log(states.value)
         let img = document.querySelector('#img-qrcode')
         img.setAttribute('src', states.value)
     })
