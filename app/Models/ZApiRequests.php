@@ -163,7 +163,7 @@ class ZApiRequests extends Model
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-            CURLOPT_URL => "{$url}chats?page=1&pageSize={$qt}",
+            CURLOPT_URL => "{$url}chats?page={$qt}",
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_ENCODING => "",
             CURLOPT_MAXREDIRS => 10,
