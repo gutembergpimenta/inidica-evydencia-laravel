@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ZApiRequestController extends Controller
 {
 
-    protected $url = ' https://api.z-api.io/instances/3AFE67D166F450F32A1D72EC2BA01B65/token/3B4282B2B6EF17ED6070BC5C/';
+    protected $url = 'https://api.z-api.io/instances/3AFE6CC42FAD40E05FF472EC2BA01B65/token/E033B9ADBA9FD7F5B09EF2B7/';
 
     public function getQrCode(Request $request)
     {
