@@ -40,7 +40,7 @@ if (route_name == "index") {
         })
         .then(response => response.json())
         .then(states =>{
-            console.log(states)
+            console.log(states.connected)
         })
         .catch(err => {
             console.log(err);
