@@ -31,13 +31,13 @@
             </div>
 
             @isset($connection)
-                @foreach ($connection as $connection)
+                @foreach ($connection as $user)
                     <div class="profile">
-                        @isset ($connection->imgUrl)
-                            <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
+                        @isset ($user->imgUrl)
+                            <img src="{{ $user->imgUrl }}" alt="{{ $user->name }}">
                         @endisset
 
-                        <span>({{ $connection['phone'] }})</span>
+                        <span>({{ $user['phone'] }})</span>
                     </div>
                 @endforeach
 
