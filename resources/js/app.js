@@ -1,6 +1,7 @@
 import './bootstrap';
 const id_instance = '3AFE6CC42FAD40E05FF472EC2BA01B65'
 const token = 'E033B9ADBA9FD7F5B09EF2B7'
+const url =" https://api.z-api.io/instances/"+id_instance+"/token/"+token+"/"
 
 const btn_mobile = document.querySelector('#btn_mobile')
 
@@ -18,7 +19,7 @@ if (btn_mobile) {
 
 if (route_name == "index") {
     setInterval(() => {
-        fetch("https://api.z-api.io/instances/"+id_instance+"/token/"+token+"/qr-code/image", {
+        fetch(url+"qr-code/image", {
             "method": "GET",
             "headers": {}
         })
@@ -31,4 +32,19 @@ if (route_name == "index") {
             console.log(err);
         });
     }, 10000);
+
+    setInterval(() => {
+        fetch(url+"status", {
+            "method": "GET",
+            "headers": {}
+        })
+        .then(response => response.json())
+        .then(states =>{
+            console.log(states)
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }, 2000);
+
 }
