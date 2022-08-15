@@ -36,7 +36,7 @@
                         <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
                     @endisset
 
-                    @if (isset(!$connection->imgUrl))
+                    @if (!$connection->imgUrl)
                         <i class="bi bi-person-circle text-3xl"></i>
                     @endif
 
