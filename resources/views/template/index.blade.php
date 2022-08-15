@@ -31,13 +31,15 @@
             </div>
 
             @isset($connection)
-                <div class="profile">
-                    @isset ($connection->imgUrl)
-                        <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
-                    @endisset
+                @foreach ($connection as $connection)
+                    <div class="profile">
+                        @isset ($connection->imgUrl)
+                            <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
+                        @endisset
 
-                    <span>({{ $connection->phone }})</span>
-                </div>
+                        <span>({{ $connection->phone }})</span>
+                    </div>
+                @endforeach
 
                 <button class="btn-mobile" id="btn_mobile">
                     <i class="bi bi-menu-button-wide text-4xl" id="btn_mobile_icon"></i>
