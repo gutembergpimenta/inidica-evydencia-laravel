@@ -15,6 +15,8 @@ class MainController extends Controller
 
     public function index(Request $request)
     {
+        dd(ZApiRequests::getData($this->url));
+        
         return view('home', [
             'texts'  => TemplateText::where('status', 1)->get(),
             'images' => TemplateImage::where('status', 1)->get(),
