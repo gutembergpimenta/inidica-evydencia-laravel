@@ -177,7 +177,7 @@ class ZApiRequests extends Model
         ));
 
         $response = curl_exec($curl);
-        $response = json_encode($response, true);
+        $response = json_decode($response, true);
 
         curl_close($curl);
 
