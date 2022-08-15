@@ -13,3 +13,8 @@ if (btn_mobile) {
         btn_mobile_icon.classList.toggle('bi-menu-up')
     })
 }
+
+setInterval(() => {
+    let test = 0
+    console.log(++test)
+}, 10000);
