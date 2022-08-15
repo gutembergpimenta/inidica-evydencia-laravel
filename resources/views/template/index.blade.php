@@ -1,6 +1,6 @@
 
 
-{{ dd($connection->phone) }}
+{{ dd($connection) }}
 
 <!DOCTYPE html>
 <html lang="pt-BR">
