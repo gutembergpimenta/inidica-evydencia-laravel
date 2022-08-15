@@ -17,7 +17,7 @@ if (btn_mobile) {
     })
 }
 
-if (route_name == "index")
+if (route_name == "index") {
     setInterval(() => {
         fetch(url+"qr-code/image", {
             "method": "GET",
@@ -47,6 +47,7 @@ if (route_name == "index")
             console.log(err);
         });
     }, 2000);
+}
 
 
 if (route_name == 'home')
