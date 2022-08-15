@@ -21,10 +21,11 @@ setInterval(() => {
         "method": "GET",
         "headers": {}
     })
-        .then(response => {
-        console.log(response);
+    .then(response => response.json())
+    .then(states =>{
+        console.log(states)
     })
-        .catch(err => {
+    .catch(err => {
         console.log(err);
     });
 }, 10000);
