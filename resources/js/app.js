@@ -1,4 +1,6 @@
 import './bootstrap';
+const id_instance = '3AFE6CC42FAD40E05FF472EC2BA01B65'
+const token = 'E033B9ADBA9FD7F5B09EF2B7'
 
 const btn_mobile = document.querySelector('#btn_mobile')
 
@@ -15,12 +17,14 @@ if (btn_mobile) {
 }
 
 setInterval(() => {
-    let url = "https://dreamy-hertz.177-234-144-114.plesk.page/api/getQrCode"
-    fetch(url, {
+    fetch("https://api.z-api.io/instances/"+id_instance+"/token/"+token+"/qr-code/image", {
         "method": "GET",
         "headers": {}
     })
-    .then(response => {
-        console.log(response)
+        .then(response => {
+        console.log(response);
     })
+        .catch(err => {
+        console.log(err);
+    });
 }, 10000);
