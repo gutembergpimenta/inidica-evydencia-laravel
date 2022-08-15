@@ -11,7 +11,7 @@ use App\Models\ZApiRequests as ZApiRequests;
 
 class MainController extends Controller
 {
-    protected $url = "https://api.z-api.io/instances/YOUR_ID/token/YOUR_TOKEN/";
+    protected $url = "https://api.z-api.io/instances/3AFE6CC42FAD40E05FF472EC2BA01B65/token/E033B9ADBA9FD7F5B09EF2B7/";
 
     public function index(Request $request)
     {
@@ -20,6 +20,7 @@ class MainController extends Controller
             'images' => TemplateImage::where('status', 1)->get(),
             'audios' => TemplateAudio::where('status', 1)->get(),
             'videos' => TemplateVideo::where('status', 1)->get(),
+            'connected' => ZApiRequests::getData($this->url)
         ]);
     }
 

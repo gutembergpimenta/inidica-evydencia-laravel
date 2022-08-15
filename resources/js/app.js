@@ -50,7 +50,7 @@ if (route_name == "index") {
 }
 
 
-if (route_name == 'home')
+if (route_name == 'home') {
     setInterval(() => {
         fetch(url+"status", {
             "method": "GET",
@@ -65,3 +65,7 @@ if (route_name == 'home')
             console.log(err);
         });
     }, 2000);
+
+    
+
+}
