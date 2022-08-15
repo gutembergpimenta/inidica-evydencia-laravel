@@ -31,7 +31,6 @@
             </div>
 
             @isset($connection)
-                {{ dd($connection->toArray()) }}
                 <div class="profile">
                     @isset ($connection->imgUrl)
                         <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
