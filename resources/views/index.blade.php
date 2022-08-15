@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-    <img src="{{ asset('assets/qrcode.jpg') }}" alt="QRCODE">
+    <img src="{{ asset('assets/qrcode.jpg') }}" alt="QRCODE" id="img-qrcode">
 @endsection
