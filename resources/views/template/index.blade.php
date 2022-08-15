@@ -31,11 +31,12 @@
             </div>
 
             @isset($connection)
+                {{ dd($connection) }}
                 <div class="profile">
                     @isset ($connection->imgUrl)
                         <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
                     @endisset
-                    
+
                     <span>({{ $connection->name }})</span>
                 </div>
 
