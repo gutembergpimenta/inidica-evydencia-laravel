@@ -164,7 +164,7 @@ class ZApiRequests extends Model
 
         curl_setopt_array(
             $curl, array(
-                CURLOPT_URL => $url."chats?pageSize=99999",
+                CURLOPT_URL => $url."chats?page=1&pageSize=10",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => "",
                 CURLOPT_MAXREDIRS => 10,
@@ -177,7 +177,7 @@ class ZApiRequests extends Model
         $response = curl_exec($curl);
         $response = json_decode($response, true);
         $err = curl_error($curl);
-        ;
+
         for ($i=0; $i<$qt; $i++) {
             $response[$i]['contact'] = 0;
         }
