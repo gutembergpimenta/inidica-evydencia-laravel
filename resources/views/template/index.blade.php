@@ -72,7 +72,11 @@
             BY: <a href="https://api.whatsapp.com/send?phone=5519983272338" target="_blank" rel="noopener noreferrer">Gutemberg Pimenta</a>
         </div>
     </footer>
+    <script>
+        const route_name = '{{ Route::currentRouteName() }}'
+    </script>
 
     @vite('resources/js/app.js')
+
 </body>
 </html>

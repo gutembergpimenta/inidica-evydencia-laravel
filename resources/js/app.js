@@ -16,17 +16,19 @@ if (btn_mobile) {
     })
 }
 
-setInterval(() => {
-    fetch("https://api.z-api.io/instances/"+id_instance+"/token/"+token+"/qr-code/image", {
-        "method": "GET",
-        "headers": {}
-    })
-    .then(response => response.json())
-    .then(states =>{
-        let img = document.querySelector('#img-qrcode')
-        img.setAttribute('src', states.value)
-    })
-    .catch(err => {
-        console.log(err);
-    });
-}, 10000);
+if (route_name == "index") {
+    setInterval(() => {
+        fetch("https://api.z-api.io/instances/"+id_instance+"/token/"+token+"/qr-code/image", {
+            "method": "GET",
+            "headers": {}
+        })
+        .then(response => response.json())
+        .then(states =>{
+            let img = document.querySelector('#img-qrcode')
+            img.setAttribute('src', states.value)
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }, 10000);
+}

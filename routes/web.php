@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/inicio', [MainController::class, 'index'])->name('home');
 Route::post('/inicio', [MainController::class, 'confirmed_indication'])->name('home.action');
