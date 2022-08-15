@@ -35,11 +35,7 @@
                     @isset ($connection->imgUrl)
                         <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
                     @endisset
-
-                    @if (!$connection->imgUrl)
-                        <i class="bi bi-person-circle text-3xl"></i>
-                    @endif
-
+                    
                     <span>({{ $connection->name }})</span>
                 </div>
 
