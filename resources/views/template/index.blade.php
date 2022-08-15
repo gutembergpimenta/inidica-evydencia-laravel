@@ -32,8 +32,12 @@
 
             @isset($connection)
                 <div class="profile">
-                    <i class="bi bi-person-circle text-3xl"></i>
-                    <span>(Nome da Pessoa)</span>
+                    @if ($connection->imgUrl)
+                        <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
+                    @else
+                        <i class="bi bi-person-circle text-3xl"></i>
+                    @endif
+                    <span>({{ $connection->name }})</span>
                 </div>
 
                 <button class="btn-mobile" id="btn_mobile">
