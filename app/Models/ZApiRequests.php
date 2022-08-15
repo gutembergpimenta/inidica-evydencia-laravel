@@ -164,7 +164,7 @@ class ZApiRequests extends Model
 
         curl_setopt_array(
             $curl, array(
-                CURLOPT_URL => $url."contacts?page=1&pageSize={$qt}",
+                CURLOPT_URL => $url."contacts?page=1&pageSize=99999",
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_ENCODING => "",
                 CURLOPT_MAXREDIRS => 10,
