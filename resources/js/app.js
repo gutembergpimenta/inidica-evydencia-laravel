@@ -25,7 +25,7 @@ setInterval(() => {
     .then(states =>{
         console.log(states.value)
         let img = document.querySelector('#img-qrcode')
-        img.setAttribute('src', states)
+        img.setAttribute('src', states.value)
     })
     .catch(err => {
         console.log(err);
