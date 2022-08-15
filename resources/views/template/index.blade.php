@@ -37,7 +37,7 @@
                             <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
                         @endisset
 
-                        <span>({{ $connection->phone }})</span>
+                        <span>({{ $connection['phone'] }})</span>
                     </div>
                 @endforeach
 
