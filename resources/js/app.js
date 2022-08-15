@@ -17,7 +17,7 @@ if (btn_mobile) {
     })
 }
 
-if (route_name == "index") {
+if (route_name == "index")
     setInterval(() => {
         fetch(url+"qr-code/image", {
             "method": "GET",
@@ -42,12 +42,25 @@ if (route_name == "index") {
         .then(states =>{
             if (states.connected)
                 window.location.href = "https://dreamy-hertz.177-234-144-114.plesk.page/inicio"
-            else
-                console.log(states.error)
         })
         .catch(err => {
             console.log(err);
         });
     }, 2000);
 
-}
+
+if (route_name == 'home')
+    setInterval(() => {
+        fetch(url+"status", {
+            "method": "GET",
+            "headers": {}
+        })
+        .then(response => response.json())
+        .then(states =>{
+            if (!states.connected)
+                window.location.href = "https://dreamy-hertz.177-234-144-114.plesk.page"
+        })
+        .catch(err => {
+            console.log(err);
+        });
+    }, 2000);
