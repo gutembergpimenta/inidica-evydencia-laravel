@@ -31,6 +31,7 @@
             </div>
 
             @isset($connection)
+            {{ dd($connnection) }}
                 <div class="profile">
                     @isset ($connection->imgUrl)
                         <img src="{{ $connection->imgUrl }}" alt="{{ $connection->name }}">
