@@ -7,7 +7,7 @@
     .calc-menu-h-screen {
         height: calc(100vh - 3.5rem);
     }
-    
+
     body {
         @apply flex min-h-screen mx-2 flex-col gap-10 items-center justify-center bg-trueGray-300;
         @apply font-mono;
@@ -35,7 +35,10 @@
     .header .header-nav .profile{
         @apply hidden lg:flex min-w-min flex-col items-center justify-center text-xs;
     }
-    
+    .header .header-nav .profile img{
+        @apply rounded-full w-8 h-8;
+    }
+
     .header .header-nav .btn-mobile{
         @apply flex lg:hidden min-w-min flex-col items-center justify-center text-xs;
     }
